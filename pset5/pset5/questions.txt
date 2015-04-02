@@ -1,0 +1,83 @@
+0.  an obscure term ostensibly referring to a lung disease caused by silica dust, 
+    sometimes cited as one of the longest words in the English language.
+    
+1.   int getrusage(int who, struct rusage *usage);
+
+       DESCRIPTION
+       
+       getrusage()  returns resource usage measures for who, which can be one of
+       the following:
+
+       RUSAGE_SELF
+              Return resource usage statistics for the calling process, which is
+              the sum of resources used by all threads in the process.
+              
+       RUSAGE_CHILDREN
+              Return  resource  usage statistics for all children of the calling
+              process that have terminated and been waited for.   These  statis-
+              tics will include the resources used by grandchildren, and further
+              removed descendants, if all of the intervening descendants  waited
+              on their terminated children.
+
+2.  16 members
+
+3.  Use the getrusage() function to get the reference point before and after the 
+    fuction run.
+    The getrusage function prototype expects a pointer. 
+    Using pointers, rather than passing by value.
+
+4.  The number of input arguments must be 2 or 3 in this case.
+    To find the amount of time that loading requires, we need the processing
+    power usage before and after to determine this time.
+    
+    In the for loop we get characters from the file to complete a word stored in
+    the 'word' array. This includes characters of any case or an apostrophe. The
+    word must be within the limit of 45 letters.
+    If the character is a digit we then ignore them and move onto the next word.
+    Now if the word has more 1 or more characters (index > 0) we must add the
+    NULL character and check this word with the check function to determine
+    if the word has been misspelled or not and we keep track of this.
+    After this we move onto collect the next word, letter by letter by after
+    resetting index to 0 until we reach the end of the file, indicated by the EOF.
+    We also record the time it takes to check for misspellings.
+    
+    Finally we measure the unloading time, that is, the time it takes to clear
+    the data from our data structure. And we display all of these values as
+    benchmarks.
+    
+    
+5.  fgetc() would return a character from the file and so we will read letter by
+    letter. This also makes it easy to read just one word at at time as when the
+    next character is a space, we stop readinG and assume that that is the word.
+    Additionally this allows us to reject words with numbers in them as we want.
+    
+6.  This is to make sure that we do not modify the original words as we pass them
+    onto our function.
+
+7.  I decided to use a hash table, iniitiallising each element first to NULL.
+    The new words that are read are placed in nodes decided by the hash function.
+    When a word is inserted onto the node and the last node of that list then
+    points to this new word.
+    A linked list allows us to prevent collisions as these words arranged by the
+    hash function allows them to be in the same index and list.
+    
+8.  Initially, runtime was O(n) as all of the words were in a single array
+
+9.  I searched for different hash function implementations and found that
+    increasing the hash table size increases the speed, and so I did.
+
+    ./speller.c austinpowers.txt
+    WORDS MISSPELLED:     644
+    WORDS IN DICTIONARY:  143091
+    WORDS IN TEXT:        19190
+    TIME IN load:         0.06
+    TIME IN check:        0.14
+    TIME IN size:         0.00
+    TIME IN unload:       0.01
+    TIME IN TOTAL:        0.21
+
+10. From what we see, the check time takes up most of the time, this is because
+    there are plenty of words stored and lists of each index is not arranged in
+    order.
+
+

@@ -1,0 +1,82 @@
+0.  BMP is variable and can have 1 bit(2 colors), 2 bit(4 colors), 
+    4 bit(16 colors), 8 bit(256 colors), 16 bit(2^16 colors), 
+    24 bit(2^24 colors), 32bit(2^32 colors).
+    GIF = 2^8 colors
+    JPEG = 2^24 colors
+    PNG = 32 bit(24 bits for colors and 8 bits for alpha/transparency), 
+    so there are 2^24 possible colors.
+
+1.  GIF
+
+2.  Lossy or lossless compression determine whether or not all of the data can
+    be recovered when uncompressed after compression. In lossless, all of the
+    data can be recovered, in lossless it is not.
+    
+3.  JPEG
+
+4.  Two thing happen when file is deleted on a FAT file system:
+    1. The filename's character is modified by the system to indicate deletion
+       and that the directory entry is possible to be recycled.
+    2. The system moves all of the file's FAT clusters to the hard drive's list
+       of free clusters but the file's data is never touched.
+    
+
+
+5.  • Physically destroying the drive, rendering it unusable
+    • Degaussing the drive to randomize the magnetic domains—most
+      likely rendering the drive unusable in the process
+    • Overwriting the drive’s data so that it cannot be recovered
+    
+
+6.  The <stdint.h> header shall declare sets of integer types having specified 
+    widths, and shall define corresponding sets of macros. It shall also 
+    define macros that specify limits of integer types corresponding to types 
+    defined in other standard headers.
+    
+7.  It shows that you want to use the data a specific way. For example,
+	uint8_t means an integer that is exactly 8 bits wide.
+
+8.  BYTE = 1 byte
+	DWORD = 4 bytes
+	LONG = 4 bytes
+	WORD = 2 bytes
+	
+9.  File type is bfType.
+    For bitmap it must be set to the signature word BM (0x4D42).
+    
+10. bfSize - The size, in bytes, of the bitmap file.
+    biSize - The number of bytes required by the structure.
+    
+    
+11. For uncompressed RGB bitmaps, if biHeight is positive, the bitmap is a 
+    bottom-up DIB with the origin at the lower left corner. If biHeight is 
+    negative, the bitmap is a top-down DIB with the origin at the upper left 
+    corner.
+    
+12. biBitCount specifies the number of bits per pixel.
+
+
+13. If the file could not be opened because there is not enough disk space, 
+    no authorisation to create file etc.
+
+
+14. This is because it specifies how many elements you want to read, 
+    and we're always reading a struct so we only need 1 struct.
+    
+15. padding = 3
+
+16. fseek(FILE *stream, long int offset, int whence) sets the file position 
+    of the stream to the given offset
+    
+    stream - This is the pointer to a FILE object that identifies the stream.
+
+    offset - This is the number of bytes to offset from whence.
+
+    whence - This is the position from where offset is added. It is specified 
+    by one of the following constants
+
+17. An integer constant which, when used as the 'whence' argument to the
+    fseek or fseeko function, specifies that the offset provided is relative
+    to the current file position.
+
+18. The photo is Rob Bowden.
